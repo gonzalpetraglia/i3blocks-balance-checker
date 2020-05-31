@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 THRESHOLD=17 # means the valid minimum is 10 ^ 16; => will fail if balance is strictly less than 0.01 ether
 
 
