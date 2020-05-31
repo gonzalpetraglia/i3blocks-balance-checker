@@ -39,3 +39,4 @@ interval=60
 ## TODO
 - Use i3blocks properties to pass the blockchain-node-url
 - Enable fetching different addresses for different networks
+- Make the threshold configuration more easy

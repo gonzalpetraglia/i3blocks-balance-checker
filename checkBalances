@@ -3,12 +3,12 @@ THRESHOLD=17 # means the valid minimum is 10 ^ 16; => will fail if balance is st
 
 
 while read ADDRESS;do
-       	if [ -z ${ADDRESS} ]; then
+	if [ -z ${ADDRESS} ]; then
 		continue
 	fi
 			
 	BALANCE=$(./getBalance $ADDRESS $1)
-       	if [ -z ${BALANCE} ]; then
+	if [ -z ${BALANCE} ]; then
 		echo
 		echo -e -n "<span color='white' bgcolor='red' weight='bold'>"
 		echo -n "ERROR $ADDRESS"
