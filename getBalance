@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z "$2" ]; then
+	NODE='https://public-node.testnet.rsk.co'
+else
+	NODE=$2
+fi
+
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["'$1'", "latest"],"id":1}' -H "Content-Type: application/json" $NODE |jq '.result' | tr a-f A-F | tr -d [\"] | cut -d 'x' -f 2 | awk '{print "obase=10;ibase=16;"$0}' | bc
+

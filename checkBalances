@@ -1,0 +1,25 @@
+#!/bin/sh
+THRESHOLD=17 # means the valid minimum is 10 ^ 16; => will fail if balance is strictly less than 0.01 ether
+
+
+while read ADDRESS;do
+       	if [ -z ${ADDRESS} ]; then
+		continue
+	fi
+			
+	BALANCE=$(./getBalance $ADDRESS $1)
+       	if [ -z ${BALANCE} ]; then
+		echo
+		echo -e -n "<span color='white' bgcolor='red' weight='bold'>"
+		echo -n "ERROR $ADDRESS"
+		echo -e -n "</span>\n"
+		exit 0
+	fi
+	if [ ${#BALANCE} -lt $THRESHOLD ]; then
+		echo -e -n "<span color='white' bgcolor='red' weight='bold'>"
+		echo -n $ADDRESS
+		echo -e -n "</span>\n"
+		exit 0
+	fi
+done<./addresses.txt
+echo OK
